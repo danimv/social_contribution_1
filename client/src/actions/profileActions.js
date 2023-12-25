@@ -14,12 +14,13 @@ export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
     .get("./api/profile")
-    .then(res =>
+    .then(res => {
+      console.log("Response data:", res.data); 
       dispatch({
         type: GET_PROFILE,
         payload: res.data
-      })
-    )
+      });
+    })
     .catch(err =>
       dispatch({
         type: GET_PROFILE,
